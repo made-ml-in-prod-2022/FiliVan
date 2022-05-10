@@ -14,7 +14,7 @@ from hydra import initialize, compose
 from hydra.utils import instantiate
 from omegaconf import DictConfig, OmegaConf
 
-
+sys.path.append("../")
 sys.path.append(os.path.join(os.path.abspath(".")))
 sys.path.append(os.path.join(os.path.abspath("."), "ml_project/"))
 import ml_project.enities
