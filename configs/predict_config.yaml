@@ -1,0 +1,9 @@
+model_path: models/model.pkl
+data_path: data/predict/features.csv
+output_path: data/predict/predictions.csv
+hydra:
+  run:
+    dir: outputs/${now:%Y-%m-%d_%H-%M-%S}
+  sweep:
+    dir: outputs/${now:%Y-%m-%d_%H-%M-%S}
+    subdir: ${hydra.job.override_dirname}
