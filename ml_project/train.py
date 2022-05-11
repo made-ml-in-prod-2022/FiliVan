@@ -7,10 +7,17 @@ from hydra.utils import instantiate, get_original_cwd
 
 import mlflow
 
-import ml_project.enities
-from ml_project.data import download_data_from_gdrive, read_data, split_train_val_data
+import ml_project.enities as enities
+from ml_project.data import (
+    download_data_from_gdrive,
+    read_data,
+    split_train_val_data,
+)
 from ml_project.features import make_features
-from ml_project.features.build_features import extract_target, build_transformer
+from ml_project.features.build_features import (
+    extract_target,
+    build_transformer,
+)
 from ml_project.models import (
     train_model,
     serialize_model,
