@@ -7,8 +7,8 @@ from sklearn.preprocessing import OneHotEncoder
 from sklearn.preprocessing import Normalizer
 
 
-from enities.feature_params import FeatureParams
-from enities.transform_params import TransformParams
+from ml_project.enities.feature_params import FeatureParams
+from ml_project.enities.transform_params import TransformParams
 
 
 def build_categorical_pipeline(transform_params: TransformParams) -> Pipeline:

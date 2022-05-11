@@ -6,7 +6,7 @@ import gdown
 from sklearn.model_selection import train_test_split
 
 
-from enities import SplittingParams, DownloadParams
+from ml_project.enities import SplittingParams, DownloadParams
 
 
 def download_data_from_gdrive(params: DownloadParams, prefix: str = "") -> str:
