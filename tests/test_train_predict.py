@@ -1,12 +1,4 @@
 import os
-import sys
-from typing import List
-
-import pytest
-
-
-sys.path.append(os.path.join(os.path.abspath("."), "ml_project/"))
-sys.path.append("../")
 
 
 def test_pred_train():
