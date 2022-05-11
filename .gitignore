@@ -100,4 +100,4 @@ mlruns
 # hydra output
 outputs
 # models dump
-models
+/models
