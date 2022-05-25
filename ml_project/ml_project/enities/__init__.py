@@ -1,4 +1,3 @@
-import imp
 from .download_params import DownloadParams
 from .feature_params import FeatureParams
 from .split_params import SplittingParams

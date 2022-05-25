@@ -1,5 +1,4 @@
 import os
-import sys
 import json
 
 import numpy as np
@@ -12,7 +11,7 @@ import pytest
 
 from hydra import initialize, compose
 from hydra.utils import instantiate
-from omegaconf import DictConfig, OmegaConf
+from omegaconf import DictConfig
 
 import ml_project.enities
 from ml_project.data import (
@@ -63,9 +62,7 @@ def test_split_train_val_data(synthetic_train_data, train_config):
 
 
 def test_extract_target(synthetic_train_data, train_config):
-    train_target = extract_target(
-        synthetic_train_data, train_config.feature_params
-    )
+    train_target = extract_target(synthetic_train_data, train_config.feature_params)
     assert set(train_target.values) == {0, 1}
 
 
@@ -83,9 +80,7 @@ def test_train_predict_synthetinc(train_config, synthetic_train_data):
     )
     train_target = extract_target(train_df, train_config.feature_params)
     val_target = extract_target(val_df, train_config.feature_params)
-    train_df = train_df.drop(
-        labels=train_config.feature_params.target_col, axis=1
-    )
+    train_df = train_df.drop(labels=train_config.feature_params.target_col, axis=1)
     val_df = val_df.drop(labels=train_config.feature_params.target_col, axis=1)
     transformer = build_transformer(
         train_config.feature_params, train_config.transform_params
@@ -104,9 +99,7 @@ def test_train_predict_synthetinc(train_config, synthetic_train_data):
     os.makedirs(os.path.dirname(train_config.metric_path), exist_ok=True)
     with open(train_config.metric_path, "w") as metric_file:
         json.dump(metrics, metric_file)
-    path_to_model = serialize_model(
-        inference_pipeline, train_config.output_model_path
-    )
+    path_to_model = serialize_model(inference_pipeline, train_config.output_model_path)
     assert os.path.exists(train_config.metric_path)
     assert os.path.exists(path_to_model)
 
