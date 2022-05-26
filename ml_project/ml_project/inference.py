@@ -30,8 +30,8 @@ MODEL_FEATURES_BOUNDS = {
     "chol": [110, 600],
     "thalach": [65, 210],
     "oldpeak": [0, 7],
-    "ca": [0, 4],
-    "thal": [0, 3],
+    "ca": [0, 3],
+    "thal": [0, 2],
 }
 
 
