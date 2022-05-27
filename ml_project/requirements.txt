@@ -1,6 +1,7 @@
 gdown==4.4.0
 hydra-core==1.1.2
 mlflow==1.25.1
+protobuf~=3.19.0
 numpy==1.22.3
 omegaconf==2.1.2
 pandas==1.4.2
