@@ -38,4 +38,4 @@ jobs:
       working-directory: ./online_inference
       run: |
         pip install -r test_requirements.txt
-        python -m pytest
+        PATH_TO_MODEL="https://drive.google.com/file/d/1EmcCrbnl1Q-5YCcpC6ohpSJR0wx23zFe/view?usp=sharing" python -m pytest
