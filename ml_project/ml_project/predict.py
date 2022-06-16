@@ -12,6 +12,7 @@ from data.make_dataset import (
 from models.model_fit_predict import predict_model, load_model
 
 LOG_FILEPATH = "log/predict.log"
+PREDICT_COLUMN_NAME = "predictions"
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
@@ -39,7 +40,7 @@ def run_predict(params: DictConfig):
     model = load_model(os.path.join(get_original_cwd(), params.model_path))
     logger.debug(f"load model from: {params.model_path}")
     predictions = predict_model(model, data)
-    data["condition"] = predictions
+    data[PREDICT_COLUMN_NAME] = predictions
     logger.info(f"predictions save at: {params.output_path}")
     data.to_csv(os.path.join(get_original_cwd(), params.output_path))
 

@@ -62,8 +62,13 @@ Project Organization
     │   │   └── model_fit_predict.py
     │   │
     │   ├── train.py       <- Scripts to train model
-    │   └── predict.py     <- Scripts to predict with last model
+    │   ├── predict.py     <- Scripts to predict with last model
+    │   └── inference.py   <- Scripts to load model and validate data
     │
+    ├── tests              <- Test ml_project package 
+    │   ├── test_train_predict.py
+    │   └── test_units.py
+    |
     ├── README.md          <- The top-level README.
     │    
     └─── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.

@@ -1,6 +1,7 @@
 from typing import Any, Optional
 
 from dataclasses import dataclass
+from hydra.core.config_store import ConfigStore
 
 from .download_params import DownloadParams
 from .split_params import SplittingParams
@@ -9,7 +10,6 @@ from .model_params import RFParams, LogregParams
 from .general_params import GeneralParams
 from .transform_params import TransformParams
 from .mlflow_params import MlflowParams
-from hydra.core.config_store import ConfigStore
 
 
 @dataclass()

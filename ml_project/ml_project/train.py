@@ -1,11 +1,13 @@
 import json
 import logging
 import os
-
-import hydra
-from hydra.utils import instantiate, get_original_cwd
+from typing import Tuple, Dict
 
 import mlflow
+import hydra
+from hydra.utils import instantiate, get_original_cwd
+from sklearn.pipeline import Pipeline
+
 
 import ml_project.enities as enities
 from ml_project.data import (
@@ -66,7 +68,6 @@ def run_train_pipeline(params: enities.TrainingParams):
         with mlflow.start_run(nested=True):
             mlflow.log_param("model_params", params.model)
             mlflow.log_param("transform_params", params.transform_params)
-            # mlflow.log_artifact("../../configs/train_config.yaml")
             mlflow.log_artifact(
                 os.path.join(get_original_cwd(), "configs/train_config.yaml")
             )
@@ -78,7 +79,9 @@ def run_train_pipeline(params: enities.TrainingParams):
         return train_pipeline(params)
 
 
-def train_pipeline(params):
+def train_pipeline(
+    params: enities.TrainingParams,
+) -> Tuple[str, Pipeline, Dict[str, float]]:
     model = instantiate(params.model)
     downloading_params = params.downloading_params
     if downloading_params:
@@ -129,15 +132,7 @@ def train_pipeline(params):
         inference_pipeline,
         os.path.join(get_original_cwd(), params.output_model_path),
     )
-    # predict_config_path = os.path.join(
-    #     get_original_cwd(), "configs/predict_config.yaml"
-    # )
-    # predict_config = OmegaConf.load(predict_config_path)
-    # predict_config.model_path = os.path.join(
-    #     os.getcwd(), path_to_model
-    # ).replace(get_original_cwd(), "../..")
-    # OmegaConf.save(config=predict_config, f=predict_config_path)
-    return path_to_model, model, metrics
+    return path_to_model, inference_pipeline, metrics
 
 
 if __name__ == "__main__":

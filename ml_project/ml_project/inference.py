@@ -5,17 +5,26 @@ import gdown
 
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
+from sklearn.pipeline import Pipeline
 
 from ml_project.models.model_fit_predict import load_model
 from ml_project.enities import InputData
 
-SklearnClassifierModel = Union[RandomForestClassifier, LogisticRegression]
 
 DATA_PATH = "data/predict/"
 MODEL_PATH = "models/"
 
 CAT_FEATURES = ["sex", "fbs", "restecg", "exang", "slope"]
-NUM_FEATURES = ["age", "cp", "trestbps", "chol", "thalach", "oldpeak", "ca", "thal"]
+NUM_FEATURES = [
+    "age",
+    "cp",
+    "trestbps",
+    "chol",
+    "thalach",
+    "oldpeak",
+    "ca",
+    "thal",
+]
 MODEL_FEATURES = CAT_FEATURES + NUM_FEATURES
 
 MODEL_FEATURES_BOUNDS = {
@@ -35,9 +44,11 @@ MODEL_FEATURES_BOUNDS = {
 }
 
 
-def download_model(model_path: str, source: str = "gdrive") -> SklearnClassifierModel:
+def download_model(model_path: str, source: str = "gdrive") -> Pipeline:
     if source == "gdrive":
-        path = gdown.download(url=model_path, output=MODEL_PATH, quiet=True, fuzzy=True)
+        path = gdown.download(
+            url=model_path, output=MODEL_PATH, quiet=True, fuzzy=True
+        )
         model = load_model(path)
     return model
 
