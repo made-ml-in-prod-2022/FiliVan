@@ -1,0 +1,6 @@
+click
+numpy
+pandas
+pandas_datareader
+scikit-learn
+torch
