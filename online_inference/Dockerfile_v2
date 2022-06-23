@@ -12,9 +12,9 @@ FROM python:3.9-slim
 
 WORKDIR /home/app
 COPY --from=builder /home/app .
-COPY app.py .
+COPY app_v2.py .
 
 ENV PYTHONPATH="${PYTHONPATH}:/home/app/dependencies"
 ENV PATH_TO_MODEL="https://drive.google.com/file/d/1oGfWKZVbueiiMZ1L2f_BqDv0oiIE3uH8/view?usp=sharing"
 
-CMD ["python", "app.py"]
+CMD ["python", "app_v2.py"]
