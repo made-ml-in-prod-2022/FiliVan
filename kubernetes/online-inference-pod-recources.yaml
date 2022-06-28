@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: online-inference-res
+  labels:
+    app: online-inference-res
+spec:
+  containers:
+    - image: filivan/online_inference
+      name: online-inference-res
+      ports:
+        - containerPort: 8000
+      resources:
+        requests:
+          memory: "256Mi"
+          cpu: "250m"
+        limits:
+          memory: "512Mi"
+          cpu: "500m"
